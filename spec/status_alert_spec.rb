@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'wary/status'
 
-describe Wary::Status::OK do
+describe Wary::Status::Alert do
   let(:message) { 'Foobar' }
-  let(:status) { Wary::Status::OK.new(message) }
+  let(:status) { Wary::Status::Alert.new(message) }
 
-  it 'is ok' do
-    expect(status).to eq(:ok)
+  it 'has failed' do
+    expect(status).to eq(:alert)
   end
 
   it 'has a message' do

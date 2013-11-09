@@ -1,4 +1,4 @@
-require 'wary/status/ok'
+require_relative 'status'
 
 module Wary
   class LoadAverageCheck
@@ -11,9 +11,9 @@ module Wary
       load = @load_meter.load
 
       if load < @alert_threshold
-        Status::OK.new("Load #{load} < #{@alert_threshold}")
+        Status::OK.new("Load #{load}")
       else
-        :alert
+        Status::Alert.new("Load #{load} exceeds threshold (#{@alert_threshold})")
       end
     end
   end
