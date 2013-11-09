@@ -1,5 +1,7 @@
 # Wary
 
+[![Code Climate](https://codeclimate.com/github/shostakovich/wary.png)](https://codeclimate.com/github/shostakovich/wary)
+
 TODO: Write a gem description
 
 ## Installation
