@@ -1,6 +1,7 @@
 # Wary
 
 [![Code Climate](https://codeclimate.com/github/shostakovich/wary.png)](https://codeclimate.com/github/shostakovich/wary)
+[![Build Status](https://travis-ci.org/shostakovich/wary.png?branch=master)](https://travis-ci.org/shostakovich/wary)
 
 TODO: Write a gem description
 
