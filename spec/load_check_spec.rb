@@ -4,7 +4,7 @@ require 'wary/load_average_check'
 describe Wary::LoadAverageCheck do
   let(:threshold) { 2.00 }
   let(:check) { Wary::LoadAverageCheck.new(load_meter, :alert_threshold => threshold) }
-
+  
   context 'when the load is below the threshold' do
     let(:load_meter) { double('LoadMeter', load: threshold - 0.01) }
     
@@ -18,6 +18,18 @@ describe Wary::LoadAverageCheck do
     
     it 'has the status :alert' do
       expect(check.status).to eq(:alert)
+    end
+  end
+
+  context 'when measuring the load failed' do
+    let(:load_meter) do
+      loadmeter = double('LoadMeter')
+      loadmeter.stub(:load).and_throw(StandardError)
+      loadmeter
+    end
+
+    it 'has the status :failure' do
+      expect(check.status).to eq(:failure)
     end
   end
 end

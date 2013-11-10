@@ -27,5 +27,11 @@ module Wary
         :alert
       end
     end
+
+    class Failure < Base
+      def to_sym
+        :failure
+      end
+    end
   end
 end
