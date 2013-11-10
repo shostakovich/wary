@@ -11,7 +11,7 @@ module Wary
     end
 
     def status
-      if checks.any? { |c| c.status == :alert }
+      if checks.any? { |c| c.status != :ok }
         :alert
       else
         :ok

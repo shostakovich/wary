@@ -17,16 +17,31 @@ describe Wary::CheckSuite do
   end
 
   context 'for a filled list' do
-    let(:checks) { [make_check] }
+    let(:checks) { [make_check(status: :ok)] }
 
     it 'is not empty' do
-      checks << double('Check')
       expect(suite).to_not be_empty
     end
 
-    it 'has the status ALERT if one ore more checks failed' do
-      checks << make_check(status: :alert)
-      expect(suite.status).to eq(:alert)
+    context 'when all checks are ok' do
+      it 'has the status OK' do
+        checks << make_check(status: :ok)
+        expect(suite.status).to eq(:ok)
+      end
+    end
+
+    context 'when one ore more checks are in an alert state' do
+      it 'has the status ALERT' do
+        checks << make_check(status: :alert)
+        expect(suite.status).to eq(:alert)
+      end
+    end
+
+    context 'when one ore more checks are in a failure state' do
+      it 'has the status ALERT' do
+        checks << make_check(status: :failure)
+        expect(suite.status).to eq(:alert)
+      end
     end
   end
 
