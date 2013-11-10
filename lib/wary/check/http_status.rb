@@ -9,6 +9,7 @@ module Wary
       def initialize(options)
         @url = options.fetch(:url)
         @http_client = options.fetch(:http_client) { HTTPClient.new }
+        configure(options)
       end
 
       def status

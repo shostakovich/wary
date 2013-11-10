@@ -10,6 +10,7 @@ module Wary
       def initialize(options)
         @load_meter = options.fetch(:load_meter) { Wary::LoadMeter.new }
         @alert_threshold = options.fetch(:alert_threshold)
+        configure(options)
       end
 
       def status
