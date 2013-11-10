@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'wary/load_average_check'
+require 'wary/check/load_average'
 
-describe Wary::LoadAverageCheck do
+describe Wary::Check::LoadAverage do
   let(:threshold) { 2.00 }
-  let(:check) { Wary::LoadAverageCheck.new(load_meter, :alert_threshold => threshold) }
+  let(:check) { Wary::Check::LoadAverage.new(load_meter, :alert_threshold => threshold) }
   
   context 'when the load is below the threshold' do
     let(:load_meter) { double('LoadMeter', load: threshold - 0.01) }
