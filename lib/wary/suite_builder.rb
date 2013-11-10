@@ -3,7 +3,6 @@ require_relative 'check_suite'
 
 class Wary::SuiteBuilder
   def initialize(configuration)
-    p configuration
     @checks = configuration.fetch(:checks) || []
   end
 
