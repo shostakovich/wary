@@ -1,4 +1,5 @@
 require_relative 'check/load_average'
+require_relative 'check/http_status'
 
 module Wary
   module Check
