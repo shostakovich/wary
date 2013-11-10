@@ -12,7 +12,10 @@ describe Wary::SuiteBuilder do
 
   context 'for one configured check' do
     let(:configuration) do
-      { checks: {'LoadAverage' => { alert_threshold: 2.0 } } }
+      { checks:
+          {'LoadAverage' =>
+             { class: 'LoadAverage',
+               alert_threshold: 2.0 } } }
     end
 
     it 'builds a suite with one check' do

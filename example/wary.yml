@@ -1,3 +1,10 @@
 :checks:
-  LoadAverage:
+  'Load Average':
+    :class: LoadAverage
     :alert_threshold: 2.0
+  'Example.com':
+    :class: HttpStatus
+    :url: 'http://example.com'
+  'Robots.txt exists':
+    :class: HttpStatus
+    :url: 'http://www.helpster.de/robots.txt'

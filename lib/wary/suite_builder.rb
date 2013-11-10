@@ -3,12 +3,14 @@ require_relative 'check_suite'
 
 class Wary::SuiteBuilder
   def initialize(configuration)
+    p configuration
     @checks = configuration.fetch(:checks) || []
   end
 
   def build
     initialized_checks = @checks.map do |name, config|
-      Kernel.const_get("Wary::Check::#{name}").new(config)
+      klass = config.fetch(:class)
+      Kernel.const_get("Wary::Check::#{klass}").new(config)
     end
 
     Wary::CheckSuite.new(initialized_checks)
