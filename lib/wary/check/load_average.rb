@@ -1,13 +1,14 @@
-require 'wary/status'
-require 'wary/check'
+require_relative '../status'
+require_relative '../check'
+require_relative '../load_meter'
 
 module Wary
   module Check
     class LoadAverage
       include Wary::Check
 
-      def initialize(load_meter, options)
-        @load_meter = load_meter
+      def initialize(options)
+        @load_meter = options.fetch(:load_meter) { Wary::LoadMeter.new }
         @alert_threshold = options.fetch(:alert_threshold)
       end
 

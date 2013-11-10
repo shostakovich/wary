@@ -1,9 +1,11 @@
+require_relative 'utils/shell'
+
 module Wary
   class LoadMeter
     class MeasurementFailed < StandardError; end
 
-    def initialize(shell)
-      @shell = shell
+    def initialize(shell = nil)
+      @shell = shell || Utils::Shell.new
     end
 
     def load

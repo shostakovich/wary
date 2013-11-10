@@ -1,8 +1,13 @@
-require_relative 'wary/version'
-require_relative 'wary/shell'
-require_relative 'wary/check_suite'
-require_relative 'wary/load_average_check'
-require_relative 'wary/load_meter'
+require 'yaml'
+
+require_relative'wary/version'
+require_relative 'wary/suite_builder'
 
 module Wary
+  def self.run
+    configuration = YAML.load_file(ENV['CONFIG'])
+    puts SuiteBuilder.new(configuration).build.status
+  end
 end
+
+Wary.run

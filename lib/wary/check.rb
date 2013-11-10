@@ -1,3 +1,5 @@
+require_relative 'check/load_average'
+
 module Wary
   module Check
     private
