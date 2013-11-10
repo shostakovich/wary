@@ -1,5 +1,5 @@
 module Wary
-  class StatusReport
+  class CheckSuite
     def initialize(checks)
       @checks = checks
     end

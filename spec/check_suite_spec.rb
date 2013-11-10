@@ -1,18 +1,18 @@
 require 'spec_helper'
-require 'wary/status_report'
+require 'wary/check_suite'
 
-describe Wary::StatusReport do
-  let(:checks_list) { Wary::StatusReport.new(checks) }
+describe Wary::CheckSuite do
+  let(:suite) { Wary::CheckSuite.new(checks) }
 
   context 'for an empty list' do
     let(:checks) { Array.new }
     
     it 'is empty' do
-      expect(checks_list).to be_empty
+      expect(suite).to be_empty
     end
 
     it 'has the status OK if no checks are set' do
-      expect(checks_list.status).to eq(:ok)
+      expect(suite.status).to eq(:ok)
     end
   end
 
@@ -21,12 +21,12 @@ describe Wary::StatusReport do
 
     it 'is not empty' do
       checks << double('Check')
-      expect(checks_list).to_not be_empty
+      expect(suite).to_not be_empty
     end
 
     it 'has the status ALERT if one ore more checks failed' do
       checks << make_check(status: :alert)
-      expect(checks_list.status).to eq(:alert)
+      expect(suite.status).to eq(:alert)
     end
   end
 
