@@ -2,14 +2,5 @@ require 'spec_helper'
 require 'wary/status'
 
 describe Wary::Status::OK do
-  let(:message) { 'Foobar' }
-  let(:status) { Wary::Status::OK.new(message) }
-
-  it 'is ok' do
-    expect(status).to eq(:ok)
-  end
-
-  it 'has a message' do
-    expect(status.message).to eq message
-  end
+  it_behaves_like 'a status', :ok
 end

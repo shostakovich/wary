@@ -5,3 +5,5 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
+
+Dir[__dir__ + '/support/**/*.rb'].each {|f| require f}
