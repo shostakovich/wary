@@ -1,9 +1,11 @@
+require_relative 'check_run'
+
 module Wary
   class CheckSuite
     attr_reader :checks
 
     def initialize(checks)
-      @checks = checks
+      @checks = run_all(checks)
     end
 
     def empty?
@@ -15,6 +17,15 @@ module Wary
         :alert
       else
         :ok
+      end
+    end
+
+    private
+    def run_all(checks)
+      checks.map do |c|
+        check = Wary::CheckRun.new(c)
+        check.run
+        check
       end
     end
   end

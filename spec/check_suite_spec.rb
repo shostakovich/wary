@@ -19,6 +19,14 @@ describe Wary::CheckSuite do
   context 'for a filled list' do
     let(:checks) { [make_check(status: :ok)] }
 
+    it 'runs all the checks only once' do
+      checks.each do |check|
+        check.should_receive(:status).once
+      end
+      suite.status
+      suite.status
+    end
+
     it 'is not empty' do
       expect(suite).to_not be_empty
     end
